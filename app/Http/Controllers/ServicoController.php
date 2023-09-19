@@ -44,7 +44,7 @@ return response()->json([
 
 
 public function pesquisarPorDescricao(Request $request){
-    $servico =  servico::where('nome', 'like', '%'. $request->descricao . '%')->get();
+    $servico =  servico::where('descricao', 'like', '%'. $request->descricao . '%')->get();
     
     
     

@@ -19,7 +19,7 @@ class ServicoFormRequest extends FormRequest
         'duracao' => 'required|numeric',
         'preco' => 'required|decimal:2'
 
-        ];
+        ];  
     }
 public function failedvalidation(Validator $validator)
 {
