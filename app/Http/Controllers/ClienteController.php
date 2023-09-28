@@ -6,10 +6,11 @@ use App\Http\Requests\clienteFormRequest;
 use App\Models\Cliente;
 use App\Models\clientemodel;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 class ClienteController extends Controller
 {
-  public function store (clienteFormRequest $request){
+  public function storeCliente(clienteFormRequest $request){
     $cliente = Cliente::create([
      'nome'=>$request->nome,                                                      
      'email'=>$request-> email ,
@@ -211,52 +212,27 @@ class ClienteController extends Controller
 
         $cliente = cliente::where('cpf', '=', $request->cpf)->first(); 
 
+ if(!isset($cliente)){
+    return response()->json([
+    'status'=> true,
+    'message'=> "Cadastro nao encontrado"
+    ]);
+ }
+
+ $cliente->senha=Hash::make($cliente->cpf);
  
- 
+$cliente->update();
 
-        if(!isset($cliente)){ 
+return response()->json([
+    'status'=> true,
+    'message'=> "Cadastro atualizado"
+]);
 
-            return response()->json([ 
 
-                'status' => false, 
-
-                'message' => "Cadastro não encontrado" 
-
-            ]); 
-
-        } 
-
-     
-
-        if(isset($request->senha)){ 
-
-            $cliente->senha = $request->senha; 
-
-        } 
-
- 
- 
-
-        $cliente-> update(); 
-
-     
-
-        return response()->json([ 
-
-            'status' => true, 
-
-            'message' => "Cadastro atualizado" 
-
-        ]); 
-
-     
-
-         
-
+    
     } 
    
     }
        
-    
     
 

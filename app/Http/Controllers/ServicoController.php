@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 
 class ServicoController extends Controller
 {
-  public function store (ServicoFormRequest $request){
+  public function store1 (ServicoFormRequest $request){
 $servico = servico::create([
  'nome'=>$request->nome,
  'descricao'=>$request->descricao,
@@ -97,7 +97,7 @@ return response()->json([
 
 }
 
-public function excluir($id){
+public function deleteServico($id){
     $servico = servico::find($id);
    
     if(!isset($servico)){

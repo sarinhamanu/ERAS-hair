@@ -8,6 +8,12 @@ use Symfony\Contracts\Service\Attribute\Required;
 
 class clienteFormRequest extends FormRequest
 {
+    public function authorize(): bool
+    {
+        return true;
+    }
+
+
     /**
      * Determine if the user is authorized to make this request.
      */
