@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 
 class ServicoController extends Controller
 {
-  public function store1 (ServicoFormRequest $request){
+  public function servicoStore (ServicoFormRequest $request){
 $servico = servico::create([
  'nome'=>$request->nome,
  'descricao'=>$request->descricao,
@@ -22,7 +22,7 @@ return response()->json([
 ],200);
 }
 
-public function pesquisarPorNome(Request $request){
+public function pesquisarPorNomeServico(Request $request){
 $servico =  servico::where('nome', 'like', '%'. $request->nome . '%')->get();
 
 
@@ -43,7 +43,7 @@ return response()->json([
 }
 
 
-public function pesquisarPorDescricao(Request $request){
+public function pesquisarPorDescricaoServico(Request $request){
     $servico =  servico::where('descricao', 'like', '%'. $request->descricao . '%')->get();
     
     
@@ -63,10 +63,10 @@ public function pesquisarPorDescricao(Request $request){
      ]);
 
     }
-    public function update(Request $request){
+    public function updateServico(Request $request){
     $servico = servico::find($request->id);
 
-    if(!isset($servico)){
+    if(!isset($servico)){   
         return response()->json([
             'status' => 'servico não encontrado'
         ]);

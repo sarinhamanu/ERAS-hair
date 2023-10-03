@@ -3,7 +3,6 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
-use Illuminate\Validation\Rules\Unique;
 
 return new class extends Migration
 {
@@ -12,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('cliente', function (Blueprint $table){
+        Schema::create('clientes', function (Blueprint $table){
        $table->id();
        $table->string('nome',120)->nullable(false);
        $table->string('celular',11)->nullable(false);
@@ -28,7 +27,8 @@ return new class extends Migration
        $table->string('cep',8)->nullable(false);
        $table->string('complemento',150)->nullable(true);
        $table->string('senha')->nullable(false);
-  
+       $table->timestamps();
+
 
         });
     }
@@ -38,6 +38,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('cliente');
+        Schema::dropIfExists('clientes');
     }
 };

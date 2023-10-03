@@ -4,13 +4,12 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\clienteFormRequest;
 use App\Models\Cliente;
-use App\Models\clientemodel;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 
 class ClienteController extends Controller
 {
-  public function storeCliente(clienteFormRequest $request){
+  public function store1(clienteFormRequest $request){
     $cliente = Cliente::create([
      'nome'=>$request->nome,                                                      
      'email'=>$request-> email ,
@@ -54,7 +53,7 @@ class ClienteController extends Controller
     }
     
     
-    public function pesquisarPorCPF(Request $request){
+    public function pesquisarPorCPFCliente(Request $request){
         $cliente =  Cliente::where('cpf', 'like', '%'. $request->cpf . '%')->get();
         
         
@@ -75,7 +74,7 @@ class ClienteController extends Controller
     
         }
 
-        public function pesquisarPorCelular(Request $request){
+        public function pesquisarPorCelularCliente(Request $request){
             $cliente =  Cliente::where('celular', 'like', '%'. $request->celular . '%')->get();
             
             
@@ -96,7 +95,7 @@ class ClienteController extends Controller
         
             }
 
-            public function pesquisarPorEmail(Request $request){
+            public function pesquisarPorEmailCliente(Request $request){
                 $cliente =  Cliente::where('email', 'like', '%'. $request->email . '%')->get();
                 
                 
@@ -116,7 +115,7 @@ class ClienteController extends Controller
                  ]);
                 
                 }
-        public function update(Request $request){
+        public function updateCliente(Request $request){
         $cliente = Cliente::find($request->id);
     
         if(!isset($cliente)){
@@ -190,7 +189,7 @@ class ClienteController extends Controller
     
     
     
-    public function excluir($id){
+    public function ClienteExcluir($id){
         $cliente = Cliente::find($id);
        
         if(!isset($cliente)){
@@ -208,7 +207,7 @@ class ClienteController extends Controller
        
        }
 
-       public function esqueciSenha(Request $request){ 
+       public function ClienteEsqueciSenha(Request $request){ 
 
         $cliente = cliente::where('cpf', '=', $request->cpf)->first(); 
 

@@ -17,19 +17,19 @@ use Illuminate\Support\Facades\Route;
 |
 */
 //servico
-Route::post('servico/store',[ServicoController::class, 'servico/store']);
-Route::post('nome',[ServicoController::class, 'pesquisarPorNome']);
-Route::post('descricao',[ServicoController::class, 'pesquisarPorDescricao']);
-Route::put('update',[ServicoController::class, 'update']);
+Route::post('servicoStore',[ServicoController::class, 'servicoStore']);
+Route::post('servicoNome',[ServicoController::class, 'pesquisarPorNomeServico']);
+Route::post('servicoDescricao',[ServicoController::class, 'pesquisarPorDescricaoServico']);
+Route::put('servicoUpdate',[ServicoController::class, 'updateServico']);
 Route::delete('deleteServico/{id}',[ServicoController::class, 'deleteServico']);
 
 
 //cliente
-Route::post('cliente/store',[ClienteController::class,'cliente/store']);
-Route::post('nomeDoCliente',[ClienteController::class,'pesquisarPorNomeDoCliente']);
-Route::post('cpf',[ClienteController::class,'pesquisarPorCPF']);
-Route::post('celular',[ClienteController::class,'pesquisarPorCelular']);
-Route::post('email',[ClienteController::class,'pesquisarPorEmail']);
-Route::put('updateCliente',[ClienteController::class,'updateCliente']);
-Route::delete('delete/{id}',[ClienteController::class,'delete{id}']);
-Route::post('esquiSenha',[ClienteController::class,'esqueciSenha']);
+Route::post('store1',[ClienteController::class,'store1']);
+Route::post('clienteNome',[ClienteController::class,'pesquisarPorNomeDoCliente']);
+Route::post('clienteCPF',[ClienteController::class,'pesquisarPorCPFCliente']);
+Route::post('clienteCelular',[ClienteController::class,'pesquisarPorCelularCliente']);
+Route::post('clienteEmail',[ClienteController::class,'pesquisarPorEmailCliente']);
+Route::put('clienteUpdate',[ClienteController::class,'updateCliente']);
+Route::delete('clienteDelete/{id}',[ClienteController::class,'deleteCliente']);
+Route::post('clienteEsqueciSenha',[ClienteController::class,'esqueciSenhaCliente']);

@@ -4,26 +4,31 @@ namespace App\Http\Requests;
 
 use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Foundation\Http\FormRequest;
-use Symfony\Contracts\Service\Attribute\Required;
+use Illuminate\Http\Exceptions\HttpResponseException;
 
 class clienteFormRequest extends FormRequest
 {
+    /**
+     * Determine if the user is authorized to make this request.
+     */
     public function authorize(): bool
     {
         return true;
     }
 
 
-    /**
-     * Determine if the user is authorized to make this request.
+        /**
+     * Get the validation rules that apply to the request.
+     *
+     * @return array<string, \Illuminate\Contracts\Validation\ValidationRule|array|string>
      */
     public function rules(): array
     {
         return [
             'nome'=>'required|max:120|min:5',
             'celular'=>'required|max:11|min:10',
-            'email'=>'required|max:120|unique|clinte.e-mail',
-            'cpf'=>'required|max:11|min:11|unique|cliente.cpf',
+            'email'=>'required|max:120|unique:clientes,email',
+            'cpf'=>'required|max:11|min:11|unique:clientes,cpf',
             'dataNascimento'=>'required|date',
             'cidade'=>'required|max:120',
             'estado'=>'required|max:2|min:2',
@@ -37,14 +42,16 @@ class clienteFormRequest extends FormRequest
 
         ];
     }
-
-    /**
-     * Get the validation rules that apply to the request.
-     *
-     * @return array<string, \Illuminate\Contracts\Validation\ValidationRule|array|string>
-     */
-    public function failedvalidation(Validator $validator)
+    public function failedvalidation(Validator $validator){
+    throw new HttpResponseException(response()->json([
+        'success'=> false,
+        'error'=> $validator->errors()
+    ]));
+    }
+    public function messages()
     {
+        
+   
         return [ 
             'nome.required'=> 'o campo nome e obrigatório ',
             'nome.max'=> 'o campo nome deve conter no maximo 120 caracteres',
@@ -80,7 +87,7 @@ class clienteFormRequest extends FormRequest
             'complemento.max'=>'o campo complemento deve conter no maximo 150 caracteres',
             'senha.required'=>'senha obrigatória',
 
-            
+        
         ];
     }
 }
