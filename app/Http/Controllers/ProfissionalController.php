@@ -4,17 +4,17 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\ProfissionalFormRequest;
+
 use App\Http\Requests\ProfissionalRequest;
-use App\Models\profissional;
-use App\Models\ProfissionalModel;
+use App\Models\Profissional;
+
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 
 class ProfissionalController extends Controller
 {
     public function store(ProfissionalRequest $request){
-        $profissional = ProfissionalModel::create([
+        $profissional = Profissional::create([
             'nome' => $request->nome,
             'celular' => $request->celular,
             'email'=>$request->email,
@@ -41,7 +41,7 @@ class ProfissionalController extends Controller
     }
     public function retornarTodos()
     {
-        $profissional = ProfissionalModel::all();
+        $profissional = Profissional::all();
 
         return  response()->json([
           'status'=>true,
@@ -50,7 +50,7 @@ class ProfissionalController extends Controller
     }
 
     public function pesquisarPorNome(Request $request){
-        $profissional = ProfissionalModel::where('nome', 'like', '%'. $request->nome . '%')->get();
+        $profissional = Profissional::where('nome', 'like', '%'. $request->nome . '%')->get();
     
         if(count($profissional)>0){
             return response()->json([
@@ -68,7 +68,7 @@ class ProfissionalController extends Controller
 
 
     public function pesquisarPorCpf(Request $request){
-        $profissional = ProfissionalModel::where('cpf', 'like', '%'. $request->cpf . '%')->get();
+        $profissional = Profissional::where('cpf', 'like', '%'. $request->cpf . '%')->get();
     
         if(count($profissional)>0){
             return response()->json([
@@ -85,7 +85,7 @@ class ProfissionalController extends Controller
     }
 
     public function pesquisarPorCelular(Request $request){
-        $profissional = ProfissionalModel::where('celular', 'like', '%'. $request->celular . '%')->get();
+        $profissional = Profissional::where('celular', 'like', '%'. $request->celular . '%')->get();
     
         if(count($profissional)>0){
             return response()->json([
@@ -103,7 +103,7 @@ class ProfissionalController extends Controller
 
 
     public function pesquisarPorEmail(Request $request){
-        $profissional = ProfissionalModel::where('email', 'like', '%'. $request->email . '%')->get();
+        $profissional = Profissional::where('email', 'like', '%'. $request->email . '%')->get();
     
         if(count($profissional)>0){
             return response()->json([
@@ -119,7 +119,7 @@ class ProfissionalController extends Controller
         }
 
         public function update(Request $request){
-            $profissional = ProfissionalModel::find($request->id);
+            $profissional = Profissional::find($request->id);
         
             if(!isset($profissional)){
                 return response()->json([
@@ -184,7 +184,7 @@ class ProfissionalController extends Controller
     
     
         public function excluir($id){
-            $profissional = ProfissionalModel::find($id);
+            $profissional = Profissional::find($id);
         
             if(!isset($profissional)){
                 return response()->json([
