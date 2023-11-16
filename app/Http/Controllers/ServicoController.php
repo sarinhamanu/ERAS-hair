@@ -23,6 +23,23 @@ class ServicoController extends Controller
         ],200);
     }
 
+    public function pesquisaPorId($id)
+    {
+        $servico = servico::find($id);
+
+        if ($servico == null) {
+            return response()->json([
+                'status' => false,
+                'message' => "Usuário não encontrado"
+            ]);
+        }
+
+        return response()->json([
+            'status' => true,
+            'data' => $servico
+        ]);
+    }
+
     public function retornarTodos()
     {
         $servico = servico::all();

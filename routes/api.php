@@ -20,6 +20,7 @@ use Illuminate\Support\Facades\Route;
 */
 //servico
 Route::post('servico/store',[ServicoController::class,'store']);
+Route::get('servico/find/{id}', [ServicoController::class, 'pesquisaPorId']); 
 Route::get('servico/retornarTodos',[ServicoController::class,'retornarTodos']);
 Route::post('servico/nome',[ServicoController::class, 'pesquisarPorNome']);
 Route::post('servico/descricao',[ServicoController::class, 'pesquisarPorDescricao']);
@@ -28,6 +29,7 @@ Route::put('servico/update', [ServicoController::class, 'update']);
 
 //cliente
 Route::post('cliente/cadastro',[ClienteController::class,'store']);
+Route::get('cliente/find/{id}',[ClienteController::class,'pesquisaPorId']);
 Route::get('cliente/retornarTodos',[ClienteController::class,'retornarTodos']);
 Route::post('cliente/procurarNome',[ClienteController::class, 'pesquisarPorNome']);
 Route::post('cliente/procurarCpf',[ClienteController::class, 'pesquisarPorCpf']);
@@ -39,6 +41,7 @@ Route::post('cliente/esqueciSenha',[ClienteController::class, 'esqueciSenha']);
 
 //profissional
 Route::post('Profissional/cadastro',[ProfissionalController::class,'store']);
+Route::get('Profissional/find/{id}',[ProfissionalController::class,'pesquisaPorId']);
 Route::get('Profissional/retornarTodos',[ProfissionalController::class,'retornarTodos']);
 Route::post('Profissional/procurarNome',[ProfissionalController::class, 'pesquisarPorNome']);
 Route::post('Profissional/procurarCpf',[ProfissionalController::class, 'pesquisarPorCpf']);
