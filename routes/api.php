@@ -36,7 +36,7 @@ Route::post('cliente/procurarCpf',[ClienteController::class, 'pesquisarPorCpf'])
 Route::post('cliente/procurarCelular',[ClienteController::class, 'pesquisarPorCelular']);
 Route::post('cliente/procurarEmail',[ClienteController::class, 'pesquisarPorEmail']);
 Route::delete('cliente/excluir/{id}',[ClienteController::class, 'excluir']);
-Route::put('cliente/atualizar', [ClienteController::class, 'update']);
+Route::put('cliente/update', [ClienteController::class, 'update']);
 Route::post('cliente/esqueciSenha',[ClienteController::class, 'esqueciSenha']);
 
 //profissional
@@ -49,3 +49,4 @@ Route::post('Profissional/procurarCelular',[ProfissionalController::class, 'pesq
 Route::post('Profissional/procurarEmail',[ProfissionalController::class, 'pesquisarPorEmail']);
 Route::delete('Profissional/excluir/{id}',[ProfissionalController::class, 'excluir']);
 Route::put('Profissional/atualizar', [ProfissionalController::class, 'update']);
+Route::get('Profissional/exportar/csv', [ProfissionalController::class, 'exportarcsv']);
