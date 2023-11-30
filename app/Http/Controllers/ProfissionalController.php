@@ -188,7 +188,7 @@ class ProfissionalController extends Controller
                 $profissional->complemento = $request->complemento;
             }
             if(isset($request->senha)){
-                $profissional->cpf = $request->senha;
+                $profissional->senha = $request->senha;
             }
             if(isset($request->salario)){
                 $profissional->salario = $request->salario;
@@ -263,5 +263,28 @@ fclose($handle);
 return Response::download(public_path().'/storage/'.$nomeArquivo)
 ->deleteFileAfterSend(true);
     }
+    public function esqueciSenha(Request $request){
+        $profissional = Profissional::where('cpf', '=', $request->cpf)->first();
+        
+
+        if(!isset($cliente)){
+            return response()->json([
+                'status' => false,
+                'message' => "Cadastro não encontrado"
+            ]);
+        }
+    
+       $profissional->senha=Hash::make($profissional->cpf);
+
+        $profissional->update();
+    
+        return response()->json([
+            'status' => true,
+            'message' => "Cadastro atualizado"
+        ]);
+    
+        
+    }
 
 }
+

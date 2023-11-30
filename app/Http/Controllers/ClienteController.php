@@ -184,7 +184,7 @@ class ClienteController extends Controller
             $clientes->complemento = $request->complemento;
         }
         if(isset($request->senha)){
-            $clientes->cpf = $request->senha;
+            $clientes->senha = $request->senha;
         }
         
         $clientes-> update();

@@ -1,7 +1,6 @@
 <?php
 
-
-
+use App\Http\Controllers\agendaController;
 use App\Http\Controllers\ClienteController;
 use App\Http\Controllers\ProfissionalController;
 use App\Http\Controllers\ServicoController;
@@ -50,3 +49,12 @@ Route::post('Profissional/procurarEmail',[ProfissionalController::class, 'pesqui
 Route::delete('Profissional/excluir/{id}',[ProfissionalController::class, 'excluir']);
 Route::put('Profissional/atualizar', [ProfissionalController::class, 'update']);
 Route::get('Profissional/exportar/csv', [ProfissionalController::class, 'exportarcsv']);
+Route::post('Profissional/esqueciSenha',[ProfissionalController::class, 'esqueciSenha']);
+
+
+//Agendas
+Route::post('cadastroAgenda', [agendaController::class, 'store']);
+Route::post('procurarAgenda',[agendaController::class, 'pesquisarPorAgenda']);
+Route::delete('excluirAgenda/{id}',[agendaController::class, 'excluir']);
+Route::put('atualizarAgenda', [agendaController::class, 'update']);
+Route::get('retornarTodosAgenda',[agendaController::class, 'retornarTodos']);
