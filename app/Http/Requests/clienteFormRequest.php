@@ -60,6 +60,7 @@ class clienteFormRequest extends FormRequest
             'celular.max'=> 'o campo celular deve conter no maximo 11 caracteres',
             'celular.min'=> 'o campo celular deve conter no minimo 10 caracteres',
             'email.required'=> 'o campo email e obrigatório',
+            'email.email'=>'o campo email está em formato incorreto',
             'email.max'=>'o campo email deve conter no maximo 120 caracteres',
             'email.unique'=>'emai ja esta cadastrado no sistema',
             'cpf.required'=> 'o campo cpf e obrigatório',
